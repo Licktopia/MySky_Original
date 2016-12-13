@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:autofit="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="jltechnologies.com.mysky.MainActivity"
-    android:background="#fc970b">
+    tools:context="jltechnologies.com.mysky.ui.MainActivity"
+    android:background="@drawable/bg_gradient">
 
     <TextView
         android:text="--"
@@ -23,6 +24,64 @@
         android:textColor="@android:color/white"
         android:textSize="150sp"/>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/refreshImageView"
+        android:layout_above="@+id/timeLabel"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="30dp"
+        android:weightSum="100"
+        android:layout_marginRight="20dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="75">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/cloudy_night"
+                android:id="@+id/iconImageView"
+                android:layout_centerInParent="false"
+                android:layout_below="@+id/refreshImageView"
+                android:layout_toLeftOf="@+id/locationLabel"
+                android:layout_toStartOf="@+id/locationLabel"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:layout_marginLeft="10dp"
+            >
+
+            <TextView
+                android:text="Please turn on location and refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/timeLabel"
+                android:layout_alignLeft="@id/timeLabel"
+                android:id="@+id/locationLabel"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:maxLines="2"
+                autofit:minTextSize="16sp"
+                android:singleLine="true"
+                android:gravity="center_vertical"
+                android:layout_gravity="center"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,35 +92,16 @@
         android:id="@+id/degreeImageView"
         android:layout_marginTop="50dp"/>
 
+
     <TextView
-        android:text="At 5:00 PM it will be..."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/temperatureLabel"
         android:layout_centerHorizontal="true"
         android:id="@+id/timeLabel"
         android:textColor="#80FFFFFF"
-        android:textSize="18sp"/>
-
-    <TextView
-        android:text="Alcatraz Island, CA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/timeLabel"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/locationLabel"
-        android:layout_marginBottom="60dp"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/cloudy_night"
-        android:layout_alignBottom="@+id/locationLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/iconImageView"/>
+        android:textSize="18sp"
+        tools:text="Waiting for data"/>
 
     <TextView
         android:text="Getting current weather..."
@@ -146,11 +186,39 @@
     </LinearLayout>
 
     <ProgressBar
-        style="@android:style/Widget.Material.ProgressBar"
+        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/refreshImageView"
         android:layout_centerHorizontal="true"
         android:id="@+id/progressBar"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:text="HOURLY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/hourlyButton"
+            android:layout_weight="1"
+            android:background="#40FFFFFF"
+            android:textColor="#FFFFFFFF"/>
+
+        <Button
+            android:text="7 DAY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dailyButton"
+            android:layout_weight="1"
+            android:background="#40FFFFFF"
+            android:textColor="#FFFFFFFF"
+            android:layout_marginLeft="2dp"/>
+    </LinearLayout>
 
 </RelativeLayout>
